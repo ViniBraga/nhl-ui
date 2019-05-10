@@ -4,7 +4,7 @@ class Footer extends Component {
     render() {
         return (
             <div className="footer">
-                Website crafted by Vinicius Braga.
+                Crafted by Vinicius Braga.
             </div>
         )
     }
