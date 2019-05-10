@@ -1,15 +1,18 @@
-import React from 'react'
-import Menu from './components/Menu'
+import React, { Component } from 'react'
 import Main from './components/Main'
+import Menu from './components/Menu'
 import './css/pure-min.css'
 import './css/side-menu.css'
 
-function App() {
-  return (
-    <div id="layout">
+class App extends Component {
+
+  render() {
+    return (
+      <div id="layout">
         <Menu/>
         <Main/>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 export default App

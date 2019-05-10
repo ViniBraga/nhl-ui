@@ -1,6 +1,24 @@
 import React, { Component } from 'react'
+import $ from 'jquery'
 
 class Menu extends Component {
+
+    constructor() {
+        super()
+        this.state = { teams: [] }
+    }
+
+    componentDidMount() {
+        $.ajax({
+          url: "https://statsapi.web.nhl.com/api/v1/teams",
+          dataType: 'json',
+          success: function (res) {
+            this.setState({ teams: res })
+          }.bind(this)
+        })
+    }
+    
+
     render() {
         return (
             <div>
@@ -22,6 +40,13 @@ class Menu extends Component {
                             </li>
 
                             <li className="pure-menu-item"><a href="#" className="pure-menu-link">Contact</a></li>
+{/* 
+                            {
+                                this.state.teams.map((team) => {
+                                    return (<li key={team.id} className="pure-menu-item"><a href="#" className="pure-menu-link">{team.name}</a></li>)
+                                })
+                            } */}
+
                         </ul>
                     </div>
                 </div>
