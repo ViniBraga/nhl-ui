@@ -1,5 +1,6 @@
 body {
     color: #777;
+    height: 100%;
 }
 
 .pure-img-responsive {
@@ -36,15 +37,23 @@ This is the parent `<div>` that contains the menu and the content area.
     #layout.active .menu-link {
         left: 150px;
     }
+
+
+.main {
+    height: 100%;
+}
+
 /*
 The content `<div>` is where all your content goes.
 */
+
 .content {
     margin: 0 auto;
     padding: 0 2em;
     max-width: 800px;
     margin-bottom: 50px;
     line-height: 1.6em;
+    height: calc(66% - 13px);
 }
 
 .header {
@@ -52,6 +61,7 @@ The content `<div>` is where all your content goes.
      color: #333;
      text-align: center;
      padding: 2.5em 2em 0;
+     height: 15%;
      border-bottom: 1px solid #eee;
  }
     .header h1 {
@@ -217,6 +227,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
     #layout {
         padding-left: 150px; /* left col width "#menu" */
+        height: 100%;
         left: 0;
     }
     #menu {
@@ -256,4 +267,6 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     width: 100%;
     padding: 1em;
     text-align: center;
+    position: relative;
+    height: 18px;
 }
