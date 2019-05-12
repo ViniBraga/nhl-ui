@@ -355,7 +355,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
       }
 
 .scrollable-table {
-    height: 450px;
+    height: 480px;
     overflow: auto;
 }
 

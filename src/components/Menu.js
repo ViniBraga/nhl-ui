@@ -41,8 +41,9 @@ class Menu extends Component {
             <div>
                 <div id="menu">
                     <div className="pure-menu">
-                        <div className="pure-menu-heading" style={logoStyle} />
-
+                        <a href="">
+                            <div className="pure-menu-heading" style={logoStyle} />
+                        </a>
                         <ul className="pure-menu-list">
                             {this.state.teams.map(team => {
                                 return (<TeamMenu key={team.id} team={team}/>)
