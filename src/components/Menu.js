@@ -1,53 +1,54 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
+import Logo from '../images/nhl_logo.png'
+import TeamMenu from './TeamMenu'
+import PubSub from 'pubsub-js'
+
+var logoStyle = {
+    width: "50%",
+    height: "193px",
+    backgroundImage: `url(${Logo})`,
+    backgroundPosition: "center center",
+    backgroundSize: "cover",
+    marginLeft: "18%"
+}
 
 class Menu extends Component {
 
     constructor() {
         super()
-        this.state = { teams: [] }
+        this.state = { teams: [], selectedTeamId: null }
     }
 
     componentDidMount() {
         $.ajax({
-          url: "https://statsapi.web.nhl.com/api/v1/teams",
+          url: 'https://statsapi.web.nhl.com/api/v1/teams',
           dataType: 'json',
           success: function (res) {
-            this.setState({ teams: res })
+            this.setState({ teams: res.teams })
           }.bind(this)
         })
+        PubSub.subscribe('teamSelected', (topic, teamId) => {
+            if(this.state.selectedTeamId) {
+                $("li#" + this.state.selectedTeamId).removeClass("menu-item-divided pure-menu-selected")
+            }
+            this.setState({ selectedTeamId:  teamId})
+        })
     }
-    
 
     render() {
         return (
             <div>
-
-                {/* <a href="#menu" id="menuLink" className="menu-link">
-                    <span>TESTE MENU</span>
-                </a>  */}
-
                 <div id="menu">
                     <div className="pure-menu">
-                        <a className="pure-menu-heading" href="#">Company</a>
+                        <div className="pure-menu-heading" style={logoStyle} />
 
                         <ul className="pure-menu-list">
-                            <li className="pure-menu-item"><a href="#" className="pure-menu-link">Home</a></li>
-                            <li className="pure-menu-item"><a href="#" className="pure-menu-link">About</a></li>
-
-                            <li className="pure-menu-item menu-item-divided pure-menu-selected">
-                                <a href="#" className="pure-menu-link">Services</a>
-                            </li>
-
-                            <li className="pure-menu-item"><a href="#" className="pure-menu-link">Contact</a></li>
-{/* 
-                            {
-                                this.state.teams.map((team) => {
-                                    return (<li key={team.id} className="pure-menu-item"><a href="#" className="pure-menu-link">{team.name}</a></li>)
-                                })
-                            } */}
-
+                            {this.state.teams.map(team => {
+                                return (<TeamMenu key={team.id} team={team}/>)
+                            })}
                         </ul>
+
                     </div>
                 </div>
 

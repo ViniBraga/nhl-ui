@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class Header extends Component {
-    render() {
-        return (
-            <div className="header">
-                <h1>National Hockey League</h1>
-                <h2>A subtitle for your page goes here</h2>
+export default () => {
+    return (
+        <div className="header">            
+            <div className="bg-header"/>
+            
+            <div className="bg-text">
+                <h1>NHL Researches</h1>
             </div>
-        )
-    }
+        </div> 
+    )
 }
-export default Header
