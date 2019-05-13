@@ -355,7 +355,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
       }
 
 .scrollable-table {
-    height: 480px;
+    height: 470px;
     overflow: auto;
 }
 
@@ -394,7 +394,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
 .modal {
     width: 600px;
-    height: 450px;
+    height: 470px;;
     margin: 0px auto;
     position: fixed;
     top: 50%;

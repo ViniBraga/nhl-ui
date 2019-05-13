@@ -38,7 +38,7 @@ class PlayersPage extends Component {
             success: function(res) {
                 this.setState({ 
                     playerSelected: res.people[0],
-                    nationalityCode: res.people[0].nationality.toLowerCase(),
+                    nationalityCode: res.people[0].nationality ? res.people[0].nationality.toLowerCase() : null,
                 })
                 resolve()
             }.bind(this)
@@ -46,16 +46,18 @@ class PlayersPage extends Component {
     })
 
     fetchCountry = (nationality) => new Promise((resolve, reject) => {
-        $.ajax({
-            url: "https://restcountries.eu/rest/v2/alpha/" + nationality,
-            dataType: 'json',
-            success: function (res) {
-                this.setState({
-                    nationality: res.name
-                })
-                resolve()
-            }.bind(this)
-        })
+        if(nationality) {
+            $.ajax({
+                url: "https://restcountries.eu/rest/v2/alpha/" + nationality,
+                dataType: 'json',
+                success: function (res) {
+                    this.setState({
+                        nationality: res.name
+                    })
+                    resolve()
+                }.bind(this)
+            })
+        }
     })
 
     fetchNationality = async(playerSelectedId) => {
